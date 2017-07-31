@@ -1,0 +1,52 @@
+package Methods;
+
+import org.openqa.selenium.WebElement;
+import org.testng.Reporter;
+
+import Axpert_Execution.Axpert_TestCases;
+import Axpert_Operations.UIOperation;
+
+public class LoginMethod extends UIOperation {
+	
+	public void loginToApplication() throws Exception{
+		
+		WebElement Project= getWebElement("SelectProject");
+		
+		selectDropDownValue(Project, "testng6");
+		
+		WebElement userName = getWebElement("username");
+		
+		Reporter.log("entering userName to the userName textbox");
+		
+		userName.sendKeys(Repository.getProperty("userName"));
+		
+		WebElement password = getWebElement("password");
+		
+		Reporter.log("entering password to the password textbox");
+		
+		password.sendKeys(Repository.getProperty("Password"));
+		
+		Reporter.log("clicking on login button");
+		
+		getWebElement("loginButton").click();
+		
+		implicitWait(15);
+		
+		String ExpectedTitle= "Welcome admin";
+		
+		String ActualTitle= getWebElement("HomePage").getText();
+		
+		if(ActualTitle.equalsIgnoreCase(ExpectedTitle))
+		{
+			System.out.println("Home Page:::::"+ActualTitle);
+			
+			System.out.println(::::::::::::::::::::LOGIN PASS:::::::::::::::::::");
+		}
+		else
+		{
+			System.out.println("Home Page not Display");
+			
+			System.out.println("::::::::::::::::::::LOGIN FAIL::::::::::::::::::::");
+		}
+}
+}

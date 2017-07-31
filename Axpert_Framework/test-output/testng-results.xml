@@ -1,0 +1,174 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testng-results skipped="0" failed="1" total="3" passed="2">
+  <reporter-output>
+    <line>
+      <![CDATA[Application Title of Application]]>
+    </line>
+    <line>
+      <![CDATA[selecting testng6 value from dropdown]]>
+    </line>
+    <line>
+      <![CDATA[entering userName to the userName textbox]]>
+    </line>
+    <line>
+      <![CDATA[entering password to the password textbox]]>
+    </line>
+    <line>
+      <![CDATA[clicking on login button]]>
+    </line>
+    <line>
+      <![CDATA[Home Page:::::Welcome admin]]>
+    </line>
+    <line>
+      <![CDATA[TestCase PASS::::LOGIN PASS(HOME PAGE IS DISPLAYING)]]>
+    </line>
+    <line>
+      <![CDATA[------------------------------------------------]]>
+    </line>
+  </reporter-output>
+  <suite name="Default suite" duration-ms="43248" started-at="2017-07-31T11:04:26Z" finished-at="2017-07-31T11:05:09Z">
+    <groups>
+    </groups>
+    <test name="Default test" duration-ms="43248" started-at="2017-07-31T11:04:26Z" finished-at="2017-07-31T11:05:09Z">
+      <class name="Scripts.LoginScript">
+        <test-method status="PASS" signature="beforeMethod(java.lang.reflect.Method)[pri:0, instance:Scripts.LoginScript@4aea35]" name="beforeMethod" is-config="true" duration-ms="16" started-at="2017-07-31T16:34:26Z" finished-at="2017-07-31T16:34:26Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[public void Scripts.LoginScript.ApplicationTitle() throws java.lang.Exception]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- beforeMethod -->
+        <test-method status="FAIL" signature="ApplicationTitle()[pri:0, instance:Scripts.LoginScript@4aea35]" name="ApplicationTitle" duration-ms="16" started-at="2017-07-31T16:34:26Z" finished-at="2017-07-31T16:34:26Z">
+          <exception class="java.lang.NullPointerException">
+            <full-stacktrace>
+              <![CDATA[java.lang.NullPointerException
+	at Scripts.LoginScript.ApplicationTitle(LoginScript.java:95)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(Unknown Source)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(Unknown Source)
+	at java.lang.reflect.Method.invoke(Unknown Source)
+	at org.testng.internal.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:84)
+	at org.testng.internal.Invoker.invokeMethod(Invoker.java:714)
+	at org.testng.internal.Invoker.invokeTestMethod(Invoker.java:901)
+	at org.testng.internal.Invoker.invokeTestMethods(Invoker.java:1231)
+	at org.testng.internal.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:127)
+	at org.testng.internal.TestMethodWorker.run(TestMethodWorker.java:111)
+	at org.testng.TestRunner.privateRun(TestRunner.java:767)
+	at org.testng.TestRunner.run(TestRunner.java:617)
+	at org.testng.SuiteRunner.runTest(SuiteRunner.java:334)
+	at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:329)
+	at org.testng.SuiteRunner.privateRun(SuiteRunner.java:291)
+	at org.testng.SuiteRunner.run(SuiteRunner.java:240)
+	at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
+	at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:86)
+	at org.testng.TestNG.runSuitesSequentially(TestNG.java:1224)
+	at org.testng.TestNG.runSuitesLocally(TestNG.java:1149)
+	at org.testng.TestNG.run(TestNG.java:1057)
+	at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:126)
+	at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:152)
+	at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:57)
+]]>
+            </full-stacktrace>
+          </exception> <!-- java.lang.NullPointerException -->
+          <reporter-output>
+            <line>
+              <![CDATA[Application Title of Application]]>
+            </line>
+          </reporter-output>
+        </test-method> <!-- ApplicationTitle -->
+        <test-method status="PASS" signature="beforeMethod(java.lang.reflect.Method)[pri:0, instance:Scripts.LoginScript@4aea35]" name="beforeMethod" is-config="true" duration-ms="0" started-at="2017-07-31T16:34:26Z" finished-at="2017-07-31T16:34:26Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[public void Scripts.LoginScript.LoadRepositories() throws java.lang.Exception]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- beforeMethod -->
+        <test-method status="PASS" signature="afterMethod(org.testng.ITestResult)[pri:0, instance:Scripts.LoginScript@4aea35]" name="afterMethod" is-config="true" duration-ms="0" started-at="2017-07-31T16:34:26Z" finished-at="2017-07-31T16:34:26Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[[TestResult name=ApplicationTitle status=FAILURE method=LoginScript.ApplicationTitle()[pri:0, instance:Scripts.LoginScript@4aea35] output=Application Title of Application]]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- afterMethod -->
+        <test-method status="PASS" signature="LoadRepositories()[pri:0, instance:Scripts.LoginScript@4aea35]" name="LoadRepositories" duration-ms="24168" started-at="2017-07-31T16:34:26Z" finished-at="2017-07-31T16:34:50Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- LoadRepositories -->
+        <test-method status="PASS" signature="LoginToApp()[pri:0, instance:Scripts.LoginScript@4aea35]" name="LoginToApp" duration-ms="18376" started-at="2017-07-31T16:34:50Z" finished-at="2017-07-31T16:35:08Z">
+          <reporter-output>
+            <line>
+              <![CDATA[selecting testng6 value from dropdown]]>
+            </line>
+            <line>
+              <![CDATA[entering userName to the userName textbox]]>
+            </line>
+            <line>
+              <![CDATA[entering password to the password textbox]]>
+            </line>
+            <line>
+              <![CDATA[clicking on login button]]>
+            </line>
+            <line>
+              <![CDATA[Home Page:::::Welcome admin]]>
+            </line>
+            <line>
+              <![CDATA[TestCase PASS::::LOGIN PASS(HOME PAGE IS DISPLAYING)]]>
+            </line>
+            <line>
+              <![CDATA[------------------------------------------------]]>
+            </line>
+          </reporter-output>
+        </test-method> <!-- LoginToApp -->
+        <test-method status="PASS" signature="afterMethod(org.testng.ITestResult)[pri:0, instance:Scripts.LoginScript@4aea35]" name="afterMethod" is-config="true" duration-ms="0" started-at="2017-07-31T16:34:50Z" finished-at="2017-07-31T16:34:50Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[[TestResult name=LoadRepositories status=SUCCESS method=LoginScript.LoadRepositories()[pri:0, instance:Scripts.LoginScript@4aea35] output={null}]]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- afterMethod -->
+        <test-method status="PASS" signature="beforeMethod(java.lang.reflect.Method)[pri:0, instance:Scripts.LoginScript@4aea35]" name="beforeMethod" is-config="true" duration-ms="0" started-at="2017-07-31T16:34:50Z" finished-at="2017-07-31T16:34:50Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[public void Scripts.LoginScript.LoginToApp() throws java.lang.Exception]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- beforeMethod -->
+        <test-method status="PASS" signature="endTest()[pri:0, instance:Scripts.LoginScript@4aea35]" name="endTest" is-config="true" duration-ms="624" started-at="2017-07-31T16:35:08Z" finished-at="2017-07-31T16:35:09Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- endTest -->
+        <test-method status="PASS" signature="afterMethod(org.testng.ITestResult)[pri:0, instance:Scripts.LoginScript@4aea35]" name="afterMethod" is-config="true" duration-ms="0" started-at="2017-07-31T16:35:08Z" finished-at="2017-07-31T16:35:08Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[[TestResult name=LoginToApp status=SUCCESS method=LoginScript.LoginToApp()[pri:0, instance:Scripts.LoginScript@4aea35] output=selecting testng6 value from dropdown]]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- afterMethod -->
+      </class> <!-- Scripts.LoginScript -->
+    </test> <!-- Default test -->
+  </suite> <!-- Default suite -->
+</testng-results>

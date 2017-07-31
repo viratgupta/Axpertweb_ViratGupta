@@ -1,0 +1,260 @@
+package AxpertTNGPkg;
+
+
+import java.awt.List;
+import java.io.IOException;
+import java.util.Iterator;
+import java.util.Set;
+import java.util.concurrent.TimeUnit;
+
+import org.openqa.selenium.Alert;
+import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.Keys;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.interactions.Action;
+import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.support.ui.ExpectedCondition;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.Select;
+import org.openqa.selenium.support.ui.WebDriverWait;
+import org.testng.annotations.BeforeTest;
+import org.testng.annotations.Test;
+
+public class NewTestNGCls {
+	
+	 WebDriver driver=new FirefoxDriver();
+
+  public void LoginPage()
+  {
+	    driver.get("http://192.168.2.9/axpertweb/aspx/Signin.aspx");
+	    driver.manage().window().maximize();
+	    Select projDD= new Select(driver.findElement(By.id("axSelectProj")));
+	    projDD.selectByVisibleText("testng6");
+	    driver.findElement(By.id("Text1")).sendKeys("admin");
+	    driver.findElement(By.id("sw")).sendKeys("agile1");
+	    driver.findElement(By.id("sw")).submit();
+  }
+  public void Logout()
+	 {
+		driver.switchTo().defaultContent();
+	    WebElement Logout=driver.findElement(By.className("icon-cog"));
+	    Actions Lg=new Actions(driver);
+	    Action log= Lg.moveToElement(Logout).build();
+	    log.perform();
+	    driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+	    driver.findElement(By.xpath(".//*[@id='Li1']/ul/li[6]/a")).click();
+	    Alert alert=driver.switchTo().alert();
+	    alert.accept();
+	    driver.findElement(By.linkText("Click here")).click();
+	 }
+ 
+ /*@Test(priority=2)
+  public void AxpFunction(){
+	  	driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+		driver.findElement(By.xpath("//*[@id='i_axpfunction']")).click();
+		driver.switchTo().frame("middle1");
+		driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
+	    WebElement FV=driver.findElement(By.name("FloatValue000F1"));
+		FV.clear();
+		FV.sendKeys("123.333");
+		driver.findElement(By.xpath(".//*[@id='date1000F1']")).click();
+		driver.findElement(By.xpath(".//*[@id='ui-datepicker-div']/table/tbody/tr[3]/td[4]/a")).click();
+		driver.findElement(By.xpath(".//*[@id='date2000F1']")).click();
+		driver.findElement(By.xpath(".//*[@id='ui-datepicker-div']/table/tbody/tr[2]/td[4]/a")).click();
+		driver.findElement(By.xpath(".//*[@id='imgSaveTst']")).click();
+  }*/
+ 
+  @Test(priority=1)
+ public void Images() throws IOException, InterruptedException
+  {
+	  this.LoginPage();
+	  driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+	  WebElement images=driver.findElement(By.xpath(".//*[@id='i_images']"));
+	  Actions a1=new Actions(driver);
+	  Action img=a1.moveToElement(images).build();
+	  img.perform();
+	  driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+	  driver.findElement(By.xpath(".//*[@id='leftmenu']/ul/li[3]/ul/li[5]/a")).click();
+
+	  driver.switchTo().frame("middle1");
+	  driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+	  driver.findElement(By.xpath(".//*[@id='Name000F1']")).sendKeys("Eclipse");
+	  driver.findElement(By.id("Img000F1")).click();
+	  
+	  String MainWindow=driver.getWindowHandle();		
+               // To handle all new opened window.				
+      Set<String> s1=driver.getWindowHandles();		
+      Iterator<String> i1=s1.iterator();		
+      		
+      while(i1.hasNext())			
+      {		
+          String ChildWindow=i1.next();		
+          		
+          if(!MainWindow.equalsIgnoreCase(ChildWindow))			
+          {    		
+                  // Switching to Child window
+      driver.switchTo().window(ChildWindow);		                                                                                       
+      driver.findElement(By.xpath(".//*[@id='filMyFile']")).click();			                  
+      Runtime.getRuntime().exec("D:\\Virat\\Axpert 9.7_Virat\\Selenium\\ImagesUpload.exe");
+      driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS); 
+      driver.findElement(By.xpath(".//*[@id='btnUpload']")).click();
+      //Thread.sleep(3000);
+			     // Closing the Child Window.
+      //driver.close();		
+          }		
+      }		
+                // Switching to Parent window i.e Main Window.
+      driver.switchTo().window(MainWindow);	
+      driver.switchTo().frame("middle1");
+      driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+      driver.findElement(By.xpath(".//*[@id='imgSaveTst']")).click();
+      Thread.sleep(5000);
+      driver.findElement(By.xpath(".//*[@id='icons']/ul/li[5]/a/img")).click();
+      driver.findElement(By.className("l2")).click();
+      WebElement TestImage= driver.findElement(By.xpath(".//*[@id='Img000F1']"));
+      Boolean ImagePresent = (Boolean) ((JavascriptExecutor)driver).executeScript("return arguments[0].complete && typeof arguments[0].naturalWidth != \"undefined\" && arguments[0].naturalWidth > 0", TestImage);
+      if (!ImagePresent)
+      {
+           System.out.println("Image not displayed.");
+      }
+      else
+      {
+          System.out.println("Image displayed.");
+      }
+  }
+
+  @Test(priority=2)
+public void ImageBodyTest()
+{
+	WebElement Imagebody=driver.findElement(By.xpath(".//*[@id='dvCustImg']/span/img"));
+	Boolean ImagePresent = (Boolean) ((JavascriptExecutor)driver).executeScript("return arguments[0].complete && typeof arguments[0].naturalWidth != \"undefined\" && arguments[0].naturalWidth > 0", Imagebody);
+    if (!ImagePresent)
+    {
+         System.out.println("Body Image not displayed.");
+    }
+    else
+    {
+        System.out.println("Body Image displayed.");
+    }
+    this.Logout();
+    this.LoginPage();
+	}
+
+  @Test(priority=3)
+public void GridImage() throws IOException, InterruptedException
+{
+	  driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+	  
+	  WebElement images=driver.findElement(By.xpath(".//*[@id='i_images']"));
+	  Actions a1=new Actions(driver);
+	  Action img=a1.moveToElement(images).build();
+	  img.perform();
+	  driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+	  driver.findElement(By.xpath(".//*[@id='leftmenu']/ul/li[3]/ul/li[4]/a")).click();	
+	  driver.switchTo().frame("middle1");
+	  driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+	  driver.findElement(By.xpath(".//*[@id='Test001F2']")).sendKeys("Gridtest");
+	  driver.findElement(By.xpath(".//*[@id='grdAtt_img_001F2']")).click();
+	 
+	  String MainWindow=driver.getWindowHandle();		
+      // To handle all new opened window.				
+		Set<String> s1=driver.getWindowHandles();		
+		Iterator<String> i1=s1.iterator();		
+				
+		while(i1.hasNext())			
+		{		
+		 String ChildWindow=i1.next();		
+		 		
+		 if(!MainWindow.equalsIgnoreCase(ChildWindow))			
+		 {    		
+		         // Switching to Child window
+		driver.switchTo().window(ChildWindow);		                                                                                       
+		driver.findElement(By.xpath(".//*[@id='filMyFile']")).click();			                  
+		Runtime.getRuntime().exec("D:\\Virat\\Axpert 9.7_Virat\\Selenium\\GridImagesUpload.exe");
+		driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS); 
+		driver.findElement(By.xpath(".//*[@id='cmdSend']")).click();
+		Thread.sleep(5000);
+		driver.findElement(By.xpath(".//*[@id='close']")).click();
+		//Thread.sleep(5000);
+			     // Closing the Child Window.
+		//driver.close();		
+		 }		
+		}		
+		       // Switching to Parent window i.e Main Window.
+		driver.switchTo().window(MainWindow);
+		driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+		driver.switchTo().frame("middle1");
+		driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
+		driver.findElement(By.xpath(".//*[@id='imgSaveTst']")).click();
+		Thread.sleep(20000);
+		Alert alert1= driver.switchTo().alert();
+		String AlertMessage=driver.switchTo().alert().getText();
+		System.out.println(AlertMessage);
+		this.Logout();
+
+}
+ 
+  @Test(priority=4)
+public void Import() throws IOException, InterruptedException
+  {
+	 this.LoginPage();
+	 driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
+	 WebElement imp= driver.findElement(By.id("lblAdmin1"));
+	 imp.click();
+	 Actions a2= new Actions(driver);
+	 Action actImp= a2.moveToElement(imp).build();
+	 actImp.perform();
+	 driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+	 driver.findElement(By.xpath(".//*[@id='li_Import1']/a")).click();
+	 String MainWindow=driver.getWindowHandle();		
+     // To handle all new opened window.				
+		Set<String> s1=driver.getWindowHandles();		
+		Iterator<String> i1=s1.iterator();		
+				
+		while(i1.hasNext())			
+		{		
+		 String ChildWindow=i1.next();		
+		 		
+		 if(!MainWindow.equalsIgnoreCase(ChildWindow))			
+		 {    		
+		         // Switching to Child window
+		driver.switchTo().window(ChildWindow);		                                                                                       
+		Select selectpgDD=new Select(driver.findElement(By.xpath(".//*[@id='ddlImTstruct']")));
+		selectpgDD.selectByVisibleText("EMPLOYEE DETAILS (EDtst )");
+		driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS); 
+		driver.findElement(By.xpath(".//*[@id='upImpFile']")).click();
+		Runtime.getRuntime().exec("D:\\Virat\\Axpert 9.7_Virat\\Selenium\\ImportFile.exe");
+		Thread.sleep(2000);
+		JavascriptExecutor javascript = (JavascriptExecutor) driver;
+		 String toenable = "document.getElementsByName('txtImFields')[0].removeAttribute('disabled');";
+		  javascript.executeScript(toenable);
+		  Thread.sleep(2000);
+		driver.findElement(By.id("txtImFields")).sendKeys("EmpID (EmpID), CTC (CTC), aa (aa), ");
+		driver.findElement(By.xpath(".//*[@id='btnImport']")).click();
+		Thread.sleep(10000);
+		String ErrorValue=driver.findElement(By.id("dvImpStatus")).getText();
+		System.out.println(ErrorValue);
+			     // Closing the Child Window.
+		driver.close();		
+		 }		
+		}		
+		       // Switching to Parent window i.e Main Window.
+		driver.switchTo().window(MainWindow);
+		this.Logout();
+  }
+ 
+  @Test(priority=5)
+  public void Iview()
+  {
+	  this.LoginPage();
+	driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);  
+	driver.findElement(By.xpath(".//*[@id='i_axpfmt']")).click();
+	driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
+	driver.switchTo().frame("middle1");
+	driver.findElement(By.xpath(".//*[@id='imgTsk']")).click();
+	driver.findElement(By.xpath(".//*[@id='taskListPopUp']/div/table/tbody/tr[2]/td[2]")).click();
+  }
+}
