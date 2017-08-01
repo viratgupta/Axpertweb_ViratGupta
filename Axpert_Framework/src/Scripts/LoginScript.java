@@ -73,7 +73,10 @@ import Methods.MDMap_NonGrid_CF_YES.MDMap_NewMode_CF_YES_REPLACE;
 import Methods.MDMap_NonGrid_CF_YES.MDMap_NONGRID_SetValuesInMasterTransaction;
 
   public class LoginScript extends TestBase  {
-	//virat gupta
+
+	  //@author= virat gupta
+	  
+	  
 //@BeforeClass
 	  @Test
   public void LoadRepositories() throws Exception
